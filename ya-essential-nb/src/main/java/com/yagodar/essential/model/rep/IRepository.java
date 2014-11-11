@@ -2,7 +2,7 @@
  * Ya-Essential. 
  * Essential tools for programming.
  * 
- * Copyright (C) 2014  Yagodarov Andrey <yagodarov.a.e@gmail.com>
+ * Copyright (C) 2014 Yagodarov Andrey <yagodarov.a.e@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
