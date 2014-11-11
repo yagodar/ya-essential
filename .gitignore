@@ -1,6 +1,8 @@
 # generated files
 .idea/
-build/
+build/classes
+build/dependency-cache
+build/tmp
 gen/
 *.iml
 
