@@ -1,0 +1,23 @@
+apply plugin: 'java'
+
+sourceCompatibility = '1.8'
+version = '1.0.0.0'
+
+jar {
+    manifest {
+        attributes  'Created-By' : 'Gradle ' + getGradle().gradleVersion,
+                    'Specification-Title' : 'Ya-Essential. Essential tools for programming',
+                    'Implementation-Title' : 'com.yagodar.essential',
+                    'Implementation-Version' : version,
+                    'Built-By': 'Yagodarov Andrey',
+                    'Build-Date' : (new java.text.SimpleDateFormat("dd.MM.yyyy HH:mm:ss")).format(Calendar.getInstance().getTime()),
+                    'Built-JDK': System.getProperty('java.version')
+
+    }
+    from sourceSets.main.allSource
+    from file('LICENSE')
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+}
