@@ -1,7 +1,7 @@
 /**
- * Ya-Essential. 
+ * Ya-Essential.
  * Essential tools for programming.
- * 
+ *
  * Copyright (C) 2014 Yagodarov Andrey <yagodarov.a.e@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
@@ -23,7 +23,7 @@ package com.yagodar.essential.model.rep;
 /**
  * @author Yagodarov Andrey <yagodarov.a.e@gmail.com>
  */
-public interface IRepository<T> {    
-    public T load();
-    public void save(T model);
+public interface IMultRepository<I,T> {
+    public T load(I id);
+    public void save(I id, T model);
 }
