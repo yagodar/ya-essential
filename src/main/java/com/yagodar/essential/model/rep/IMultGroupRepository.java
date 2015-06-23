@@ -28,15 +28,20 @@ import java.util.Map;
 /**
  * @author Yagodarov Andrey <yagodarov.a.e@gmail.com>
  */
-public interface IMultRepository<T> {
-    OperationResult<T> load(long id);
-    OperationResult<Map<Long,T>> loadAllMap();
-    OperationResult<List<T>> loadAllList();
-    OperationResult<Long> insert();
-    OperationResult<Long> insert(T model);
-    OperationResult<Integer> update(T model);
-    OperationResult<Integer> updateAllMap(Map<Long, T> modelById);
-    OperationResult<Integer> updateAllList(List<T> modelList);
-    OperationResult<Integer> delete(long id);
+public interface IMultGroupRepository<T> {
+    OperationResult<T> load(long groupId, long id);
+    OperationResult<Map<Long,T>> loadGroupMap(long groupId);
+    OperationResult<List<T>> loadGroupList(long groupId);
+    OperationResult<Map<Long, Map<Long,T>>> loadAllMap();
+    OperationResult<Map<Long, List<T>>> loadAllList();
+    OperationResult<Long> insert(long groupId);
+    OperationResult<Long> insert(long groupId, T model);
+    OperationResult<Integer> update(long groupId, T model);
+    OperationResult<Integer> updateGroup(long groupId, Map<Long, T> modelById);
+    OperationResult<Integer> updateGroup(long groupId, List<T> modelList);
+    OperationResult<Integer> updateAllMap(Map<Long, Map<Long, T>> modelByIdByGroup);
+    OperationResult<Integer> updateAllList(Map<Long, List<T>> modelListByGroup);
+    OperationResult<Integer> delete(long groupId, long id);
+    OperationResult<Integer> deleteGroup(long groupId);
     OperationResult<Integer> deleteAll();
 }

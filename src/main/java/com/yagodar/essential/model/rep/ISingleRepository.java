@@ -20,10 +20,15 @@
 
 package com.yagodar.essential.model.rep;
 
+import com.yagodar.essential.operation.OperationResult;
+
 /**
  * @author Yagodarov Andrey <yagodarov.a.e@gmail.com>
  */
 public interface ISingleRepository<T> {
-    public T load();
-    public void save(T model);
+    OperationResult<T> load();
+    OperationResult<Long> insert();
+    OperationResult<Long> insert(T model);
+    OperationResult<Integer> update(T model);
+    OperationResult<Integer> delete();
 }
