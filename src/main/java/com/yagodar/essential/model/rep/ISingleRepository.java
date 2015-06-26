@@ -20,12 +20,13 @@
 
 package com.yagodar.essential.model.rep;
 
+import com.yagodar.essential.model.Model;
 import com.yagodar.essential.operation.OperationResult;
 
 /**
  * @author Yagodarov Andrey <yagodarov.a.e@gmail.com>
  */
-public interface ISingleRepository<T> {
+public interface ISingleRepository<T extends Model> {
     OperationResult<T> load();
     OperationResult<Long> insert();
     OperationResult<Long> insert(T model);

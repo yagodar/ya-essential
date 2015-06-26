@@ -20,6 +20,7 @@
 
 package com.yagodar.essential.model.rep;
 
+import com.yagodar.essential.model.Model;
 import com.yagodar.essential.operation.OperationResult;
 
 import java.util.List;
@@ -28,7 +29,7 @@ import java.util.Map;
 /**
  * @author Yagodarov Andrey <yagodarov.a.e@gmail.com>
  */
-public interface IMultGroupRepository<T> {
+public interface IMultGroupRepository<T extends Model> {
     OperationResult<T> load(long groupId, long id);
     OperationResult<Map<Long,T>> loadGroupMap(long groupId);
     OperationResult<List<T>> loadGroupList(long groupId);
@@ -42,6 +43,7 @@ public interface IMultGroupRepository<T> {
     OperationResult<Integer> updateAllMap(Map<Long, Map<Long, T>> modelByIdByGroup);
     OperationResult<Integer> updateAllList(Map<Long, List<T>> modelListByGroup);
     OperationResult<Integer> delete(long groupId, long id);
+    OperationResult<Integer> delete(long groupId, T model);
     OperationResult<Integer> deleteGroup(long groupId);
     OperationResult<Integer> deleteAll();
 }
