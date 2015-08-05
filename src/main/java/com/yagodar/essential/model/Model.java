@@ -27,12 +27,19 @@ public class Model {
         return mName;
     }
 
-    public void setName(String name) {
+    public boolean setName(String name) {
         if(name == null || name.isEmpty()) {
-            mName = mDefName + "#" + mId;
-        } else {
-            mName = name;
+            name = mDefName + "#" + mId;
         }
+
+        boolean changed = false;
+
+        if(mName == null || !name.equals(mName)) {
+            mName = name;
+            changed = true;
+        }
+
+        return changed;
     }
 
     private final long mId;
