@@ -28,7 +28,7 @@ public class ListModel<T extends Model> extends Model {
 
     public void setModelList(List<T> modelList) {
         if(modelList == null) {
-            throw new IllegalArgumentException("Bill list must not be null!");
+            throw new IllegalArgumentException("Model list must not be null!");
         }
 
         mModelList = modelList;
