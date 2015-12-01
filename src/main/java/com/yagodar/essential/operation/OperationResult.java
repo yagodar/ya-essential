@@ -40,6 +40,15 @@ public class OperationResult<D> {
         mData = data;
     }
 
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "@" + Integer.toHexString(hashCode())
+                + " FailMessage[" + mFailMessage + "]"
+                + " FailMessageId[" + mFailMessageId + "]"
+                + " FailThrowable[" + mFailThrowable + "]"
+                + " Data[" + mData + "]";
+    }
+
     public boolean isSuccessful() {
         return mFailMessage == null && mFailMessageId == null && mFailThrowable == null;
     }
