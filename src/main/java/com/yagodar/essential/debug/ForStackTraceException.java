@@ -1,4 +1,4 @@
-package com.yagodar.essential.exception;
+package com.yagodar.essential.debug;
 
 /**
  * Created by yagodar on 21.11.2015.

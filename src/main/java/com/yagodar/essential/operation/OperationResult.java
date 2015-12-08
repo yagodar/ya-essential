@@ -1,5 +1,7 @@
 package com.yagodar.essential.operation;
 
+import com.yagodar.essential.debug.DebugUtils;
+
 /**
  * Created by yagodar on 19.06.2015.
  */
@@ -42,11 +44,20 @@ public class OperationResult<D> {
 
     @Override
     public String toString() {
-        return getClass().getSimpleName() + "@" + Integer.toHexString(hashCode())
-                + " FailMessage[" + mFailMessage + "]"
-                + " FailMessageId[" + mFailMessageId + "]"
-                + " FailThrowable[" + mFailThrowable + "]"
-                + " Data[" + mData + "]";
+        StringBuilder sb = new StringBuilder();
+        DebugUtils.buildShortClassTag(this, sb);
+        if (isSuccessful()) {
+            sb.append(" success=ok");
+        } else {
+            sb.append(" success={");
+            sb.append("'").append(mFailMessage);
+            sb.append("' '").append(mFailMessageId);
+            sb.append("' '").append(mFailThrowable);
+            sb.append("'}");
+        }
+        sb.append(" data=").append(mData);
+        sb.append("}");
+        return sb.toString();
     }
 
     public boolean isSuccessful() {
