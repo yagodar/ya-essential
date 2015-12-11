@@ -60,6 +60,19 @@ public class ListModel<T extends Model> extends Model {
         }
     }
 
+    public int getPos(long id) {
+        ensure();
+        return mModelIdList.indexOf(id);
+    }
+
+    public int getPos(T model) {
+        ensure();
+        if(model == null) {
+            throw new IllegalArgumentException("Model must not be null!");
+        }
+        return mModelIdList.indexOf(model.getId());
+    }
+
     public T getModel(long id) {
         ensure();
 
