@@ -15,27 +15,7 @@ public class OperationResult<D> {
         this(null, null, null, data);
     }
 
-    public OperationResult(Throwable failThrowable, D data) {
-        this(null, null, failThrowable, data);
-    }
-
-    public OperationResult(String failMessage, D data) {
-        this(failMessage, null, null, data);
-    }
-
-    public OperationResult(String failMessage, Throwable failThrowable, D data) {
-        this(failMessage, 0, failThrowable, data);
-    }
-
-    public OperationResult(Integer failMessageId, D data) {
-        this(null, failMessageId, null, data);
-    }
-
-    public OperationResult(Integer failMessageId, Throwable failThrowable, D data) {
-        this(null, failMessageId, failThrowable, data);
-    }
-
-    public OperationResult(String failMessage, Integer failMessageId, Throwable failThrowable, D data) {
+    protected OperationResult(String failMessage, Integer failMessageId, Throwable failThrowable, D data) {
         mFailMessage = failMessage;
         mFailMessageId = failMessageId;
         mFailThrowable = failThrowable;
@@ -50,12 +30,12 @@ public class OperationResult<D> {
             sb.append(" success=ok");
         } else {
             sb.append(" success={");
-            sb.append("'").append(mFailMessage);
-            sb.append("' '").append(mFailMessageId);
-            sb.append("' '").append(mFailThrowable);
+            sb.append("'").append(getFailMessage());
+            sb.append("' '").append(getFailMessageId());
+            sb.append("' '").append(getFailThrowable());
             sb.append("'}");
         }
-        sb.append(" data=").append(mData);
+        sb.append(" data=").append(getData());
         sb.append("}");
         return sb.toString();
     }
