@@ -13,10 +13,10 @@ public class Model {
         if(defName == null) {
             throw new IllegalArgumentException("Default model name must not be null!");
         }
-
         mId = id;
         mDefName = defName;
         setName(name);
+        mTag = createTag();
     }
 
     public long getId() {
@@ -42,8 +42,17 @@ public class Model {
         return changed;
     }
 
+    public Object getTag() {
+        return mTag;
+    }
+
+    protected Object createTag() {
+        return null;
+    }
+
     private final long mId;
     private final String mDefName;
     private String mName;
+    private Object mTag;
 
 }
