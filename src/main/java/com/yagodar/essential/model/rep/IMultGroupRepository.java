@@ -33,8 +33,10 @@ public interface IMultGroupRepository<T extends Model> {
     OperationResult<T> load(long groupId, long id);
     OperationResult<Map<Long,T>> loadGroupMap(long groupId);
     OperationResult<List<T>> loadGroupList(long groupId);
+    OperationResult<Integer> loadGroupCount(long groupId);
     OperationResult<Map<Long, Map<Long,T>>> loadAllMap();
     OperationResult<Map<Long, List<T>>> loadAllList();
+    OperationResult<Map<Long, Integer>> loadAllCount();
     OperationResult<Long> insert(long groupId);
     OperationResult<Long> insert(long groupId, T model);
     OperationResult<Integer> update(long groupId, T model);

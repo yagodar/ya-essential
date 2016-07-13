@@ -7,6 +7,9 @@ import java.util.List;
  * Created by yagodar on 24.06.2015.
  */
 public class ListModel<T extends Model> extends Model {
+    public ListModel(long id) {
+        super(id);
+    }
 
     public ListModel(long id, String defName) {
         super(id, defName);

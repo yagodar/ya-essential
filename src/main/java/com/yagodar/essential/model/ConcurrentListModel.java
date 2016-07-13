@@ -6,6 +6,9 @@ import java.util.List;
  * Created by yagodar on 24.06.2015.
  */
 public class ConcurrentListModel<T extends Model> extends ListModel<T> {
+    public ConcurrentListModel(long id) {
+        super(id);
+    }
 
     public ConcurrentListModel(long id, String defName) {
         super(id, defName);

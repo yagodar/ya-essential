@@ -33,6 +33,7 @@ public interface IMultRepository<T extends Model> {
     OperationResult<T> load(long id);
     OperationResult<Map<Long,T>> loadAllMap();
     OperationResult<List<T>> loadAllList();
+    OperationResult<Integer> loadCount();
     OperationResult<Long> insert();
     OperationResult<Long> insert(T model);
     OperationResult<Integer> update(T model);
