@@ -18,6 +18,10 @@ public class ConcurrentListModel<T extends Model> extends ListModel<T> {
         super(id, defName, name);
     }
 
+    public ConcurrentListModel(long id, String defName, String name, int modelCount) {
+        super(id, defName, name, modelCount);
+    }
+
     @Override
     public synchronized List<T> getModelList() {
         return super.getModelList();

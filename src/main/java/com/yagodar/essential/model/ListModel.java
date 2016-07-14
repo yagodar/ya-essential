@@ -8,25 +8,33 @@ import java.util.List;
  */
 public class ListModel<T extends Model> extends Model {
     public ListModel(long id) {
-        super(id);
+        this(id, null);
     }
 
     public ListModel(long id, String defName) {
-        super(id, defName);
+        this(id, defName, null);
     }
 
     public ListModel(long id, String defName, String name) {
+        this(id, defName, name, 0);
+    }
+
+    public ListModel(long id, String defName, String name, int modelCount) {
         super(id, defName, name);
+        setModelCount(modelCount);
+    }
+
+    public int getCount() {
+        if(isLoaded()) {
+            return mModelList.size();
+        } else {
+            return mModelCount;
+        }
     }
 
     public List<T> getModelList() {
         ensure();
         return mModelList;
-    }
-
-    public int getCount() {
-        ensure();
-        return mModelList.size();
     }
 
     public void setModelList(List<T> modelList) {
@@ -110,6 +118,14 @@ public class ListModel<T extends Model> extends Model {
         }
     }
 
+    private void setModelCount(int modelCount) {
+        if(modelCount < 0) {
+            throw new IllegalArgumentException("Model count must not be < 0!");
+        }
+        mModelCount = modelCount;
+    }
+
+    private int mModelCount;
     private List<T> mModelList;
     private List<Long> mModelIdList;
 }
