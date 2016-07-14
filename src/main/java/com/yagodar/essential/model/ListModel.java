@@ -16,10 +16,10 @@ public class ListModel<T extends Model> extends Model {
     }
 
     public ListModel(long id, String defName, String name) {
-        this(id, defName, name, 0);
+        this(id, defName, name, null);
     }
 
-    public ListModel(long id, String defName, String name, int modelCount) {
+    public ListModel(long id, String defName, String name, Integer modelCount) {
         super(id, defName, name);
         setModelCount(modelCount);
     }
@@ -27,8 +27,10 @@ public class ListModel<T extends Model> extends Model {
     public int getCount() {
         if(isLoaded()) {
             return mModelList.size();
-        } else {
+        } else if(isModelCountLoaded()) {
             return mModelCount;
+        } else {
+            throw new IllegalStateException("Nor model List no model count not loaded yet!");
         }
     }
 
@@ -118,14 +120,21 @@ public class ListModel<T extends Model> extends Model {
         }
     }
 
-    private void setModelCount(int modelCount) {
+    public boolean isModelCountLoaded() {
+        return mModelCount != null;
+    }
+
+    private void setModelCount(Integer modelCount) {
+        if(modelCount == null) {
+            return;
+        }
         if(modelCount < 0) {
             throw new IllegalArgumentException("Model count must not be < 0!");
         }
         mModelCount = modelCount;
     }
 
-    private int mModelCount;
+    private Integer mModelCount;
     private List<T> mModelList;
     private List<Long> mModelIdList;
 }

@@ -18,7 +18,7 @@ public class ConcurrentListModel<T extends Model> extends ListModel<T> {
         super(id, defName, name);
     }
 
-    public ConcurrentListModel(long id, String defName, String name, int modelCount) {
+    public ConcurrentListModel(long id, String defName, String name, Integer modelCount) {
         super(id, defName, name, modelCount);
     }
 
